@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Dagger2MVVM</string>
+
+    <string name="blank_error">This blank is empty!</string>
+</resources>
