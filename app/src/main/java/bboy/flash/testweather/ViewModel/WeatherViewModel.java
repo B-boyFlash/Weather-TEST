@@ -54,8 +54,14 @@ public class WeatherViewModel extends BaseViewModel {
                         String errorBody = error.response().errorBody().string();
                         Log.w(TAG, errorBody);
                         liveData.setValue(new ErrorState(errorBody));
+                    } catch (ClassCastException e) {
+                        e.printStackTrace();
+                        liveData.setValue(new ErrorState(throwable.getMessage()));
                     } catch (IOException x) {
                         throwable.fillInStackTrace();
+                    } catch (NullPointerException ex) {
+                        ex.printStackTrace();
+                        liveData.setValue(new ErrorState(throwable.getMessage()));
                     }
                     throwable.fillInStackTrace();
                 });

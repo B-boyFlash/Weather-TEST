@@ -29,15 +29,11 @@ public class NetworkModule {
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
         JavaNetCookieJar javaNetCookieJar = new JavaNetCookieJar(cookieManager);
         //
-        Dispatcher dispatcher = new Dispatcher();
-        dispatcher.setMaxRequests(1);
-        //
         return new OkHttpClient.Builder()
                 .cookieJar(javaNetCookieJar)
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
-                .dispatcher(dispatcher)
                 .build();
     }
 
